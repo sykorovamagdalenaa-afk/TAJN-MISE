@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tajná mise 007</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle, #1c1c1c, #000);
+      color: white;
+      font-family: Georgia, serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .box {
+      border: 2px solid #c9a227;
+      padding: 35px;
+      border-radius: 20px;
+      max-width: 620px;
+      margin: 20px;
+      box-shadow: 0 0 35px #c9a22766;
+      background: rgba(0,0,0,0.82);
+    }
+
+    h1 {
+      color: #c9a227;
+      font-size: 40px;
+      letter-spacing: 3px;
+    }
+
+    h2 {
+      color: #c9a227;
+    }
+
+    input {
+      padding: 13px;
+      font-size: 20px;
+      text-align: center;
+      border-radius: 8px;
+      border: none;
+      margin-top: 15px;
+      width: 80%;
+      text-transform: uppercase;
+    }
+
+    button, a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 13px 25px;
+      font-size: 18px;
+      background: #c9a227;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .error {
+      color: #ff4d4d;
+      margin-top: 15px;
+    }
+
+    .small {
+      margin-top: 35px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    hr {
+      margin: 30px 0;
+      border: 1px solid #c9a22733;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box" id="login">
+    <h1>MI6</h1>
+    <h2>TAJNÁ MISE 007</h2>
+
+    <p>Navazuji šifrované spojení...</p>
+    <p>Identifikace agenta je vyžadována.</p>
+
+    <p><strong>Zadejte přístupový kód:</strong></p>
+
+    <input type="text" id="code" placeholder="Zadej kód" />
+    <br />
+
+    <button onclick="checkCode()">Odemknout misi</button>
+
+    <p class="error" id="error"></p>
+  </div>
+
+  <div class="box hidden" id="success">
+    <h1>🔓 PŘÍSTUP UDĚLEN</h1>
+
+    <h2>Vítej, agente Jirko.</h2>
+
+    <p>
+      Po důkladném prověření bylo potvrzeno,
+      že po <strong>70 letech úspěšných misí</strong>
+      jsi připraven přijmout další úkol.
+    </p>
+
+    <hr>
+
+    <h2>📁 TAJNÝ SPIS</h2>
+
+    <p>
+      <strong>Krycí název operace:</strong><br>
+      OPERACE ÚNIK
+    </p>
+
+    <p><strong>Členové týmu:</strong></p>
+
+    <p>
+      🕵️ Agent Jirka<br>
+      🕵️ Agent Katka<br>
+      🕵️ Agent Majda<br>
+      🕵️ Agent Karel
+    </p>
+
+    <p>
+      <strong>Cíl mise:</strong><br>
+      Společnými silami vyřešit všechny hádanky,
+      uniknout dříve, než vyprší čas,
+      a dokázat, že zkušenosti jsou tou nejlepší zbraní.
+    </p>
+
+    <p>
+      Po otevření tajného spisu získáš všechny informace
+      potřebné k zahájení operace.
+    </p>
+
+    <a href="POUKAZ.pdf" target="_blank">📂 OTEVŘÍT TAJNÝ SPIS</a>
+
+    <p class="small">
+      Tento dokument je přísně tajný.<br>
+      Jakékoliv vyzrazení informací může ohrozit průběh mise.
+    </p>
+  </div>
+
+  <script>
+    function checkCode() {
+      const code = document.getElementById("code").value.trim().toUpperCase();
+      const error = document.getElementById("error");
+
+      if (code === "AGENT007") {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("success").classList.remove("hidden");
+      } else {
+        error.textContent = "Přístup zamítnut. Nesprávný kód, agente.";
+      }
+    }
+  </script>
+
+</body>
+</html>
